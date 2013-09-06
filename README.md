@@ -4,7 +4,26 @@ dicepass - generate strong, pronouncable, rememberable passwords
 
 # SYNOPSIS
 
-    dicepass
+    dicepass -m 4 -l 10 -n 3 -s "." -d "/usr/share/dict/words"
+
+Possible parameters are
+
+  --min/-m _integer_            The minimum length for words to use
+  --max/-l _integer_            The maximum length for words to use
+  --num/-n _integer_            The number of words to use
+  --separator/-s _string_       The string to use to separate words
+  --dictionary/-d _filename_    The dictionary to draw words from
+  --help/-h                     Print this synopsis
+  --pod/--man/-p                Print the full documentation
+  --test/-t                     Run the self-test
+
+All parameters are optional, with the following default values:
+
+* _--min_/_-m_: 4
+* _--max_/_-l_: 10
+* _--num_/_-n_: 3
+* _--separator_/_-s_: "."
+* _--dictionary_/_-d_: "/usr/share/dict/words"
 
 # DESCRIPTION
 
