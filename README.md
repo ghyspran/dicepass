@@ -8,6 +8,8 @@ dicepass - generate strong, pronouncable, rememberable passwords
 
 Possible parameters are
 
+| Parameter                   | Description                         |
+|-----------------------------|-------------------------------------|
 | --min/-m _integer_          | The minimum length for words to use |
 | --max/-l _integer_          | The maximum length for words to use |
 | --num/-n _integer_          | The number of words to use          |
