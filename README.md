@@ -21,11 +21,13 @@ Possible parameters are
 
 All parameters are optional, with the following default values:
 
-* --min/-m: 4
-* --max/-l: 10
-* --num/-n: 3
-* --separator/-s: "."
-* --dictionary/-d: "/usr/share/dict/words"
+| Parameter       |                         |
+|-----------------|-------------------------|
+| --min/-m        | 4                       |
+| --max/-l        | 10                      |
+| --num/-n        | 3                       |
+| --separator/-s  | "."                     |
+| --dictionary/-d | "/usr/share/dict/words" |
 
 # DESCRIPTION
 
