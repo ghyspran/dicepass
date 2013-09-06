@@ -1,17 +1,43 @@
-#!/usr/bin/env perl -lw
+#!/usr/bin/perl -lw
 
 use strict;
 use warnings;
 
-# Configuration variables
+use Getopt::Long;
+use Pod::Usage;
+
+## Set default configuration for Getopt::Long ##
+# Minimum word length
 my $Min_Length = 4;
+# Maximum word length
 my $Max_Length = 10;
-my $Num_Words  = 3;
+# Number of words in string
+my $Num_Words = 3;
+# Character to separate words in string
 my $Word_Separator = '.';
-my $Words      = "/usr/share/dict/words";
+# Dictionary to draw words from
+my $Words = "/usr/share/dict/words";
+# Help stuff
+my $help = 0;
+my $pod = 0;
+# Run the test suite
+my $test = 0;
+
+GetOptions( 'min|m=i'         => \$Min_Length,
+            'max|l=i'         => \$Max_Length,
+            'num|n=i'         => \$Num_Words,
+            'separator|s=s'   => \$Word_Separator,
+            'dictionary|d=s'  => \$Words,
+            'help|h'          => \$help,
+            'pod|man|p'       => \$pod,
+            'test|t'          => \$test
+          );
+
+pod2usage(1) if $help;
+pod2usage(-exitval => 0, -verbose => 2) if $pod;
 
 # Self test if --test is passed in
-test() if @ARGV and $ARGV[0] eq '--test';
+test() if $test;
 
 # Run the main program
 print main();
@@ -69,7 +95,34 @@ dicepass - generate strong, pronouncable, rememberable passwords
 
 =head1 SYNOPSIS
 
-    dicepass
+    dicepass -m 4 -l 10 -n 3 -s "." -d "/usr/share/dict/words"
+
+Possible parameters are
+
+  --min/-m <integer>            The minimum length for words to use
+  --max/-l <integer>            The maximum length for words to use
+  --num/-n <integer>            The number of words to use
+  --separator/-s <string>       The string to use to separate words
+  --dictionary/-d <filename>    The dictionary to draw words from
+  --help/-h                     Print this synopsis
+  --pod/--man/-p                Print the full documentation
+  --test/-t                     Run the self-test
+
+All parameters are optional, with the following default values:
+
+=over
+
+=item C<--min>/C<-m>: 4
+
+=item C<--max>/C<-l>: 10
+
+=item C<--num>/C<-n>: 3
+
+=item C<--separator>/C<-s>: "."
+
+=item C<--dictionary>/C<-d>: "/usr/share/dict/words"
+
+=back
 
 =head1 DESCRIPTION
 
